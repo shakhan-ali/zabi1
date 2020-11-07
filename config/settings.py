@@ -165,3 +165,5 @@ STATICFILES_FINDERS = [
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+DEFAULT_FROM_EMAIL = 'admin@exchagerate.com'
