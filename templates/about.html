@@ -1,8 +1,10 @@
 {% extends '_base.html' %}
-
+{% load static %}
 
     {% block title %}About{% endblock title %}
 
     {% block content %}
         <h1>About</h1>
+        <img class="bookcover" src="{% static 'images/zabi.jpg' %}"><br>
+        <p>Some kind of developer wit passion in Artificial Intelligence and Machine learning </p>
     {% endblock content %}
