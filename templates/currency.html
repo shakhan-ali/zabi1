@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+{% load static %}
+
+    {% block title %}Exchange{% endblock title %}
+
+    {% block content %}
+        <h1>Exchange</h1>
+        <p>Note: the base currency denomination is US dollar</p><br>
+        <form>
+            <input id="currency" placeholder="Currency" type="text">
+            <input type="submit" value= "Convert">
+        </form>
+        <div id="result">
+        </div>
+        <script src="{% static 'js/currency.js' %}"
+    {% endblock content %}
