@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'allauth',
     'allauth.account',
+    'debug_toolbar',
 
     #local
     'accounts',
@@ -78,6 +79,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 AUTH_USER_MODEL ='accounts.CustomUser'
 
 MIDDLEWARE = [
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -85,7 +87,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware', 
+    'django.middleware.cache.FetchFromCacheMiddleware', 
 ]
+CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_SECONDS = 604800         
+CACHE_MIDDLEWARE_KEY_PREFIX = ''
 
 ROOT_URLCONF = 'config.urls'
 
@@ -171,3 +178,8 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 DEFAULT_FROM_EMAIL = 'admin@exchagerate.com'
+
+import socket 
+hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
+
